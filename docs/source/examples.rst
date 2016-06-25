@@ -1,4 +1,0 @@
-quickavro examples
-==================
-
-
