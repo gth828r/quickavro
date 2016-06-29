@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>quickavro examples &mdash; quickavro 0.1.1 documentation</title>
+  <title>quickavro examples &mdash; quickavro 0.1.13 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="quickavro 0.1.1 documentation" href="index.html"/>
+    <link rel="top" title="quickavro 0.1.13 documentation" href="index.html"/>
         <link rel="prev" title="API" href="api.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.13
               </div>
             
           
@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#reading-an-avro-file-with-binaryencoder">Reading an avro file with BinaryEncoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-an-avro-file-with-binaryencoder">Writing an avro file with BinaryEncoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-a-deflate-snappy-codec">Using a deflate/snappy codec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#without-context-handling">Without context handling</a></li>
 </ul>
 </li>
 </ul>
@@ -138,6 +139,7 @@
 <h1>quickavro examples<a class="headerlink" href="#quickavro-examples" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="reading-an-avro-file">
 <h2>Reading an avro file<a class="headerlink" href="#reading-an-avro-file" title="Permalink to this headline">¶</a></h2>
+<p>quickavro receives the schema from Avro file header so there is no need to specify the schema when using <code class="xref py py-class docutils literal"><span class="pre">quickavro.FileReader</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quickavro</span>
 
 <span class="k">with</span> <span class="n">quickavro</span><span class="o">.</span><span class="n">FileReader</span><span class="p">(</span><span class="s2">&quot;example.avro&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
@@ -174,6 +176,7 @@
 </div>
 <div class="section" id="reading-an-avro-file-with-binaryencoder">
 <h2>Reading an avro file with BinaryEncoder<a class="headerlink" href="#reading-an-avro-file-with-binaryencoder" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-class docutils literal"><span class="pre">quickavro.BinaryEncoder</span></code> can also be used directly for reading and writing Avro files directly for extra flexibility.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quickavro</span>
 
 <span class="k">with</span> <span class="n">quickavro</span><span class="o">.</span><span class="n">BinaryEncoder</span><span class="p">()</span> <span class="k">as</span> <span class="n">encoder</span><span class="p">:</span>
@@ -264,6 +267,9 @@
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="without-context-handling">
+<h2>Without context handling<a class="headerlink" href="#without-context-handling" title="Permalink to this headline">¶</a></h2>
 <p>When not using context handling with <code class="xref py py-class docutils literal"><span class="pre">quickavro.FileWriter</span></code>, blocks must be created manually by calling <code class="xref py py-meth docutils literal"><span class="pre">quickavro.FileWriter.flush()</span></code> and then finally call <code class="xref py py-meth docutils literal"><span class="pre">quickavro.FileWriter.close()</span></code> when finished:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">avro_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">writer</span> <span class="o">=</span> <span class="n">quickavro</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -328,7 +334,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1.1',
+            VERSION:'0.1.13',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
